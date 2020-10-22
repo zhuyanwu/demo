@@ -49,24 +49,12 @@ public class PersonController {
 
 
     @PostMapping(value = "/createPerson2")
-    public String insertPerson3(@RequestBody Map map) {
-        int i = 1;
-        return map.toString();
+    public Person insertPerson3(@RequestBody Map map) {
+        Person person = new Person();
+        person.setName((String) map.get("name"));
+        return personDao.save(person);
     }
 
-    @GetMapping(value = "/test")
-    public void test() throws ExecutionException, InterruptedException {
-        List<Future> fList = new ArrayList<>();
-        for(int i=0;i<10;i++){
-            Future future = ThreadPoolUtil.testReturn(i, "name" + i);
-            fList.add(future);
-        }
-        for(Future future : fList){
-            while(!future.isDone());
-            Person person = (Person) future.get();
-            System.out.println(person.toString());
-        }
-        System.out.println("---end---");
-    }
+
 
 }

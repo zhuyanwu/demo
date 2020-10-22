@@ -1,7 +1,5 @@
 package com.example.demo.enums;
 
-import javax.xml.transform.Result;
-
 public enum ResultEnum {
 
     SUCCESS(0,"OK"),

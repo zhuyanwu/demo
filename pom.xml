@@ -52,6 +52,11 @@
             <artifactId>esdk-obs-java</artifactId>
             <version>[3.19.7,)</version>
         </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+            <version>3.4.0</version>
+        </dependency>
     </dependencies>
 
     <build>
