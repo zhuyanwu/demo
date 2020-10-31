@@ -16,13 +16,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.web.multipart.MultipartFile;
 
-/**
- * @description: 对表格操作的相关方法
- * @author: 刘云鹏
- * @phone:13115616929
- * @email: ypliuca@isoftstone.com
- * @date: 2020/7/10 18:36
- */
+
 public class POIUtils {
     private final static String xls = "xls";
     private final static String xlsx = "xlsx";
