@@ -1,20 +1,24 @@
 package com.example.demo.controller;
 
 import com.example.demo.util.ExcelUtil;
+import com.example.demo.util.POIUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.List;
 
 @RestController
 public class ExcelController {
@@ -66,6 +70,22 @@ public class ExcelController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 导入
+     * @param file
+     */
+    @PostMapping("/upload")
+    public List<String[]> upload(@RequestParam("file") MultipartFile file){
+
+        try {
+            List<String[]> strings = POIUtils.readExcel(file);
+            return strings;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }
